@@ -1,5 +1,7 @@
 const arr = ["nemo"];
 
+let large = new Array(100000).fill("nemo");
+
 function findNemo() {
   let t0 = performance.now();
   for (let i = 0; i < arr.length; i++) {
@@ -12,4 +14,4 @@ function findNemo() {
   console.log("Time taken to find nemo was " + (t1 - t0) + " milliseconds");
 }
 
-findNemo();
+findNemo(large);
