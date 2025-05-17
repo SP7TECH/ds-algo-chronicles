@@ -29,7 +29,7 @@ class LinkedList {
     return this;
   }
 
-  pop(value) {
+  pop() {
     // For no items in the LL
     if (!this.head) return undefined;
 
@@ -62,5 +62,5 @@ console.log(ll1);
 ll1.push(4);
 console.log(ll1);
 
-ll1.pop(4);
+ll1.pop();
 console.log(ll1);
