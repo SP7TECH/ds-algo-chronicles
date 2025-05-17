@@ -28,10 +28,39 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  pop(value) {
+    // For no items in the LL
+    if (!this.head) return undefined;
+
+    // For more than one item in the LL
+    let temp = this.head;
+    let pre = this.head;
+
+    while (temp.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+
+    this.tail = pre;
+    this.tail.next = null;
+    this.length--;
+
+    // For one item in the LL
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp;
+  }
 }
 
 let ll1 = new LinkedList(11);
 console.log(ll1);
 
 ll1.push(4);
+console.log(ll1);
+
+ll1.pop(4);
 console.log(ll1);
