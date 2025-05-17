@@ -84,6 +84,17 @@ class LinkedList {
 
     return temp;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    let temp = this.head;
+    for (let i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+
+    return temp;
+  }
 }
 
 let ll1 = new LinkedList(11);
@@ -100,3 +111,8 @@ console.log(ll1);
 
 ll1.shift();
 console.log(ll1);
+
+ll1.push(3);
+ll1.push(23);
+ll1.push(7);
+console.log(ll1.get(1));
