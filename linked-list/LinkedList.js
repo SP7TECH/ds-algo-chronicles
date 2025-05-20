@@ -105,6 +105,22 @@ class LinkedList {
 
     return false;
   }
+
+  insert(index, value) {
+    if (index === 0) return this.unshift(value);
+
+    if (index === this.length) return this.push(value);
+
+    if (index < 0 || index >= this.length - 1) return false;
+
+    const newNode = new Node(value);
+    const temp = this.get(index - 1);
+
+    newNode.next = temp.next;
+    temp.next = newNode;
+    this.length++;
+    return true;
+  }
 }
 
 let ll1 = new LinkedList(11);
@@ -126,3 +142,6 @@ ll1.push(3);
 ll1.push(23);
 ll1.push(7);
 console.log(ll1.get(1));
+
+ll1.insert(2, 10);
+console.log(ll1);
