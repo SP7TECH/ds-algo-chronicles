@@ -1,11 +1,11 @@
-export class Node {
+class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
-export class LinkedList {
+class LinkedList {
   constructor(value) {
     let newNode = new Node(value);
 
