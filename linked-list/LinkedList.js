@@ -1,11 +1,11 @@
-class Node {
+export class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
-class LinkedList {
+export class LinkedList {
   constructor(value) {
     let newNode = new Node(value);
 
@@ -155,6 +155,27 @@ class LinkedList {
 
     return this;
   }
+
+  findMiddleNode() {
+    if (!this.head) return null;
+
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast.next) {
+      if (fast.next !== null) {
+        fast = fast.next;
+      }
+
+      if (fast.next !== null) {
+        fast = fast.next;
+      }
+
+      slow = slow.next;
+    }
+
+    return slow;
+  }
 }
 
 let ll1 = new LinkedList(11);
@@ -185,3 +206,11 @@ console.log(ll1);
 
 ll1.reverse();
 console.log(ll1);
+
+const list1 = new LinkedList(1);
+list1.push(2);
+list1.push(3);
+list1.push(4);
+list1.push(5);
+
+console.log(list1.findMiddleNode());
