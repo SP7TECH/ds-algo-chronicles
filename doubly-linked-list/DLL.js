@@ -29,6 +29,23 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (this.length === 0) return undefined;
+
+    let temp = this.tail;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+      temp.prev = null;
+    }
+
+    this.length--;
+    return this;
+  }
 }
 
 const list1 = new DoublyLinkedList(11);
@@ -36,4 +53,7 @@ list1.push(3);
 list1.push(23);
 list1.push(7);
 list1.push(4);
+console.log(list1);
+
+list1.pop();
 console.log(list1);
