@@ -79,6 +79,24 @@ class DoublyLinkedList {
     this.length--;
     return temp;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    let temp = this.head;
+    if (index < this.length / 2) {
+      for (let i = 0; i < index; i++) {
+        temp = temp.next;
+      }
+    } else {
+      temp = this.tail;
+      for (let i = this.length - 1; i > index; i--) {
+        temp = temp.prev;
+      }
+    }
+
+    return temp;
+  }
 }
 
 const list1 = new DoublyLinkedList(11);
@@ -96,3 +114,5 @@ console.log(list1);
 
 list1.shift();
 console.log(list1);
+
+console.log(list1.get(1));
