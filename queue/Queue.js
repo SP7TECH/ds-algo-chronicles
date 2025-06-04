@@ -4,3 +4,12 @@ class Node {
     this.next = null;
   }
 }
+
+class Queue {
+  constructor(value) {
+    const newNode = new Node(value);
+    this.first = newNode;
+    this.next = newNode;
+    this.length = 1;
+  }
+}
