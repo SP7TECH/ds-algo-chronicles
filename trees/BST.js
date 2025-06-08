@@ -5,3 +5,9 @@ class Node {
     this.right = null;
   }
 }
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+}
