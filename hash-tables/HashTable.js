@@ -35,6 +35,20 @@ class HashTable {
       }
     }
   }
+
+  keys() {
+    const allKeys = [];
+
+    for (let i = 0; i < this.dataMap.length; i++) {
+      if (this.dataMap[i]) {
+        for (let j = 0; j < this.dataMap[i].length; j++) {
+          allKeys.push(this.dataMap[i][j][0]);
+        }
+      }
+    }
+
+    return allKeys;
+  }
 }
 
 const ht1 = new HashTable();
@@ -48,3 +62,4 @@ ht1.set("key4", 500);
 console.log(ht1);
 
 console.log(ht1.get("key11"));
+console.log(ht1.keys());
