@@ -176,6 +176,24 @@ class LinkedList {
 
     return slow;
   }
+
+  hasLoop() {
+    if (!this.head) return false;
+
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast && fast.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+
+      if (fast === slow) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 let ll1 = new LinkedList(11);
@@ -214,3 +232,13 @@ list1.push(4);
 list1.push(5);
 
 console.log(list1.findMiddleNode());
+
+console.log(list1.hasLoop());
+
+const list2 = new LinkedList(1);
+list2.push(2);
+list2.push(3);
+list2.push(4);
+list2.tail.next = list2.head;
+console.log(list2);
+console.log(list2.hasLoop());
