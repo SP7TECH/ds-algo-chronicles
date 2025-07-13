@@ -125,7 +125,7 @@ class LinkedList {
   remove(index) {
     if (index === 0) return this.shift();
 
-    if (index === this.length) return this.pop();
+    if (index === this.length - 1) return this.pop();
 
     if (index < 0 || index >= this.length) return undefined;
 
@@ -186,6 +186,7 @@ class LinkedList {
     while (fast && fast.next) {
       slow = slow.next;
       fast = fast.next.next;
+      console.log(fast);
 
       if (fast === slow) {
         return true;
@@ -193,6 +194,25 @@ class LinkedList {
     }
 
     return false;
+  }
+
+  findKthFromEnd(k) {
+    if (!this.head) return null;
+
+    let fast = this.head;
+    let slow = this.head;
+
+    for (let i = 0; i < k; i++) {
+      if (!fast) return null;
+      fast = fast.next;
+    }
+
+    while (fast) {
+      slow = slow.next;
+      fast = fast.next;
+    }
+
+    return slow;
   }
 }
 
@@ -242,3 +262,5 @@ list2.push(4);
 list2.tail.next = list2.head;
 console.log(list2);
 console.log(list2.hasLoop());
+
+console.log(list1.findKthFromEnd(2));
