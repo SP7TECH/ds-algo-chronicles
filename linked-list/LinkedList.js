@@ -214,6 +214,29 @@ class LinkedList {
 
     return slow;
   }
+
+  removeDuplicates() {
+    if (!this.head) return null;
+
+    let current = this.head;
+
+    while (current) {
+      let runner = current;
+      while (runner && runner.next) {
+        let temp = runner.next;
+        if (current.value === temp.value) {
+          runner.next = temp.next;
+          temp.next = null;
+          this.length--;
+        } else {
+          runner = runner.next;
+        }
+      }
+      current = current.next;
+    }
+
+    return this;
+  }
 }
 
 let ll1 = new LinkedList(11);
@@ -264,3 +287,13 @@ console.log(list2);
 console.log(list2.hasLoop());
 
 console.log(list1.findKthFromEnd(2));
+
+let list3 = new LinkedList(3);
+list3.push(3);
+list3.push(3);
+
+// console.log(list3);
+// console.log(list3.removeDuplicates());
+
+console.log(JSON.stringify(list3)); // For readable output
+console.log(JSON.stringify(list3.removeDuplicates())); // For readable output
