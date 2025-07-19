@@ -237,6 +237,20 @@ class LinkedList {
 
     return this;
   }
+
+  binaryToDecimal() {
+    if (!this.head) return 0;
+
+    let current = this.head;
+
+    let num = 0;
+    while (current) {
+      num = num * 2 + current.value;
+      current = current.next;
+    }
+
+    return num;
+  }
 }
 
 let ll1 = new LinkedList(11);
@@ -268,7 +282,7 @@ console.log(ll1);
 ll1.reverse();
 console.log(ll1);
 
-const list1 = new LinkedList(1);
+let list1 = new LinkedList(1);
 list1.push(2);
 list1.push(3);
 list1.push(4);
@@ -278,7 +292,7 @@ console.log(list1.findMiddleNode());
 
 console.log(list1.hasLoop());
 
-const list2 = new LinkedList(1);
+let list2 = new LinkedList(1);
 list2.push(2);
 list2.push(3);
 list2.push(4);
@@ -292,8 +306,12 @@ let list3 = new LinkedList(3);
 list3.push(3);
 list3.push(3);
 
-// console.log(list3);
-// console.log(list3.removeDuplicates());
-
 console.log(JSON.stringify(list3)); // For readable output
 console.log(JSON.stringify(list3.removeDuplicates())); // For readable output
+
+let list4 = new LinkedList(1);
+list4.push(1);
+list4.push(1);
+list4.push(1);
+
+console.log(list4.binaryToDecimal());
