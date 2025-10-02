@@ -66,6 +66,23 @@ class LinkedList {
 
     this.length++;
   }
+
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let temp = this.head;
+      this.head = temp.next;
+      temp.next = null;
+    }
+
+    this.length--;
+  }
 }
 
 const ll1 = new LinkedList(4);
