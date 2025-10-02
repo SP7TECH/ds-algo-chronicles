@@ -29,10 +29,36 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    let pre = this.head;
+    let temp = this.head;
+
+    while (temp.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+    this.tail = pre;
+    pre.next = null;
+
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+  }
 }
 
 const ll1 = new LinkedList(4);
 console.log(ll1);
 
 ll1.push(8);
+console.log(ll1);
+
+ll1.pop();
 console.log(ll1);
