@@ -108,7 +108,7 @@ class LinkedList {
   }
 
   insert(index, value) {
-    if (index < 0 || index > this.length) return null;
+    if (index < 0 || index > this.length) return false;
 
     if (index === 0) this.unshift(value);
     if (index === this.length - 1) this.push(value);
@@ -118,6 +118,19 @@ class LinkedList {
     newNode.next = temp.next;
     temp.next = newNode;
 
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index > this.length) return false;
+
+    if (index === 0) this.shift();
+    if (index === this.length - 1) this.pop();
+
+    let pre = this.get(index - 1);
+    let temp = pre.next;
+    pre.next = temp.next;
+    temp.next = null;
     return true;
   }
 }
@@ -142,4 +155,7 @@ ll1.set(3, 10);
 console.log(ll1);
 
 ll1.insert(4, 12);
+console.log(ll1);
+
+ll1.remove(2);
 console.log(ll1);
