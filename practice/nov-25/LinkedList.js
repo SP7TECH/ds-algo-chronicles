@@ -32,7 +32,7 @@ class LinkedList {
 
   pop() {
     if (!this.head) {
-      return undefined;
+      return null;
     }
 
     let pre = this.head;
@@ -69,7 +69,7 @@ class LinkedList {
 
   shift() {
     if (!this.head) {
-      return undefined;
+      return null;
     }
 
     if (this.length === 1) {
@@ -83,6 +83,43 @@ class LinkedList {
 
     this.length--;
   }
+
+  get(index) {
+    if (index < 0 || index > this.length) return null;
+    if (index === 0) return this.head;
+    if (index === this.length - 1) return this.tail;
+
+    let temp = this.head;
+    for (let i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+
+    return temp;
+  }
+
+  set(index, value) {
+    let temp = this.get(index);
+    if (temp) {
+      temp.value = value;
+      return true;
+    }
+
+    return false;
+  }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return null;
+
+    if (index === 0) this.unshift(value);
+    if (index === this.length - 1) this.push(value);
+
+    const newNode = new Node(value);
+    let temp = this.get(index - 1);
+    newNode.next = temp.next;
+    temp.next = newNode;
+
+    return true;
+  }
 }
 
 const ll1 = new LinkedList(4);
@@ -95,4 +132,14 @@ ll1.pop();
 console.log(ll1);
 
 ll1.unshift(2);
+console.log(ll1);
+
+ll1.push(6);
+ll1.push(8);
+console.log(ll1.get(3));
+
+ll1.set(3, 10);
+console.log(ll1);
+
+ll1.insert(4, 12);
 console.log(ll1);
